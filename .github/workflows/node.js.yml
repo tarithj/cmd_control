@@ -28,7 +28,7 @@ jobs:
               npm run build-mac-x64
               npm run build-win-x86
       - name: Upload release binaries
-      - uses: AButler/upload-release-assets@v2.0
+        uses: AButler/upload-release-assets@v2.0
         with:
           files: 'bin/*'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
