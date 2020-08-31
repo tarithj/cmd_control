@@ -17,10 +17,10 @@ const spawn = require('cross-spawn')
 
 let commandRun
 if (commandArgv === null) {
-  commandRun = spawn(command, [], { env: process.env, cwd: __dirname, stdin: process.stdin })
+  commandRun = spawn(command, [], { env: process.env, stdin: process.stdin })
   stdListen()
 } else {
-  commandRun = spawn(command, [commandArgv], { env: process.env, cwd: __dirname, stdin: process.stdin })
+  commandRun = spawn(command, [commandArgv], { env: process.env, stdin: process.stdin })
   stdListen()
 }
 
