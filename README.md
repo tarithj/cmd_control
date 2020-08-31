@@ -14,3 +14,5 @@ CMD CONTROL is a WIP command scheduling and controlling software
 * --commandArgv: The argv of the command (example: ``cmd_control-win-x64.exe --command=cd --commandArgv=..``)
 * --commandTill: The max amount of time in seconds the command is allowed to run (example: ``cmd_control-win-x64.exe --command=pause --commandTill=10``)
 * --killSignal: The kill signal that should be fired when the max amount of time is passed (example: ``cmd_control-win-x64.exe --command=abc.exe --commandTill=10 --killSignal=SIGINT``)
+## How can I help ?
+All kinds of contributions are welcome 🙌! The most basic way to show your support is to star 🌟 the project, or to raise issues 💬
