@@ -15,7 +15,7 @@
   },
   "bin": "main.js",
   "author": "Tarith Jayasooriya",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "cross-spawn": "^7.0.3",
     "eslint": "^7.7.0",
