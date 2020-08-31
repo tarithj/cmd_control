@@ -1,37 +1,45 @@
 const { argv } = require('yargs')
 const command = argv.command
-let commandArgv = argv.commandArgv
-const till = argv.commandTill * 1000
+const commandArgv = argv.commandArgv || null
+console.log(commandArgv)
+const till = argv.commandTill * 1000 || null
 let killSignal = argv.killSignal
 
 if (command === undefined) {
   console.error('command argv is undefined')
   process.exit(1)
 }
-if (commandArgv === undefined) {
-  commandArgv = 0
-}
 if (killSignal === undefined) {
   killSignal = 'SIGINT'
 }
 
 const spawn = require('cross-spawn')
-const ls = spawn(command, [commandArgv], { env: process.env, cwd: __dirname, stdin: process.stdin })
 
-ls.stdout.on('data', (data) => {
-  console.log(`stdout: ${data}`)
-})
-process.stdin.pipe(ls.stdin)
+let commandRun
+if (commandArgv === null) {
+  commandRun = spawn(command, [], { env: process.env, cwd: __dirname, stdin: process.stdin })
+  stdListen()
+} else {
+  commandRun = spawn(command, [commandArgv], { env: process.env, cwd: __dirname, stdin: process.stdin })
+  stdListen()
+}
 
-ls.stderr.on('data', (data) => {
-  console.error(`stderr: ${data}`)
-})
+function stdListen () {
+  commandRun.stdout.on('data', (data) => {
+    console.log(`stdout: ${data}`)
+  })
+  process.stdin.pipe(commandRun.stdin)
+  commandRun.stderr.on('data', (data) => {
+    console.error(`stderr: ${data}`)
+  })
+  commandRun.on('close', (code) => {
+    console.log(`child process exited with code ${code}`)
+    process.exit(code)
+  })
+}
 
-ls.on('close', (code) => {
-  console.log(`child process exited with code ${code}`)
-  process.exit(code)
-})
-
-setTimeout(function () {
-  ls.kill(killSignal)
-}, till)
+if (till !== null) {
+  setTimeout(function () {
+    command.kill(killSignal)
+  }, till)
+}
