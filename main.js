@@ -1,7 +1,6 @@
 const { argv } = require('yargs')
 const command = argv.command
 const commandArgv = argv.commandArgv || null
-console.log(commandArgv)
 const till = argv.commandTill * 1000 || null
 let killSignal = argv.killSignal
 
