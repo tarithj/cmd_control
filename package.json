@@ -13,7 +13,7 @@
     "build-linux-x64": "pkg . -t node12.18.1-linux-x64 -o build/cmd_control-linux-x64",
     "build-linux-x86": "pkg . -t node12.18.1-linux-x86 -o build/cmd_control-linux-x86"
   },
-  "bin": "main.js",
+  "bin": "src/main.js",
   "author": "Tarith Jayasooriya",
   "license": "MIT",
   "devDependencies": {
