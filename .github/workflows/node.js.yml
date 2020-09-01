@@ -24,7 +24,6 @@ jobs:
               npm i
               npm run build-win-x64
               npm run build-mac-x64
-              npm run build-win-x86
       - name: upload
         uses: AButler/upload-release-assets@v2.0
         with:
