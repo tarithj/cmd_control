@@ -2,7 +2,7 @@
   "name": "cmd_control",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-all": "pkg .",
@@ -29,5 +29,9 @@
   "dependencies": {
     "eslint-config-standard": "^14.1.1",
     "yargs": "^15.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tarithj/cmd_control"
   }
 }
