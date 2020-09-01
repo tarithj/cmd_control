@@ -1,6 +1,5 @@
 # This workflow will do a clean install of node dependencies, build the source code and attach it to the release
 name: Build
-
 on:
   release:
     types: [released]
@@ -27,6 +26,7 @@ jobs:
               npm run build-mac-x64
               npm run build-win-x86
       - uses: AButler/upload-release-assets@v2.0
+      - name: upload
         with:
           files: 'build/*'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
