@@ -17,7 +17,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Bump npm version and build
       - run: |
               echo ${{ github.event.release.tag_name }}
               npm version ${{ github.event.release.tag_name }}
@@ -27,8 +26,7 @@ jobs:
               npm run build-win-x64
               npm run build-mac-x64
               npm run build-win-x86
-      - name: Upload release binaries
-        uses: AButler/upload-release-assets@v2.0
+      - uses: AButler/upload-release-assets@v2.0
         with:
           files: 'build/*'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
